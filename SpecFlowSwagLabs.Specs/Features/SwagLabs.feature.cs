@@ -80,15 +80,24 @@ namespace SpecFlowSwagLabs.Specs.Features
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Login as standard user")]
+        [Xunit.SkippableTheoryAttribute(DisplayName="Login as standard user")]
         [Xunit.TraitAttribute("FeatureTitle", "SwagLabs")]
         [Xunit.TraitAttribute("Description", "Login as standard user")]
         [Xunit.TraitAttribute("Category", "login")]
-        public virtual void LoginAsStandardUser()
+        [Xunit.InlineDataAttribute("standard_user", "https://www.saucedemo.com/inventory.html", new string[0])]
+        [Xunit.InlineDataAttribute("locked_out_user", "https://www.saucedemo.com/", new string[0])]
+        public virtual void LoginAsStandardUser(string user, string url, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
+            string[] @__tags = new string[] {
                     "login"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("User", user);
+            argumentsOfScenario.Add("Url", url);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login as standard user", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 4
 this.ScenarioInitialize(scenarioInfo);
@@ -111,19 +120,81 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 5
- testRunner.Given("the user navigates to login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("user navigates to login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 6
- testRunner.And("enters username standard_user", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("enters username {0}", user), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 7
  testRunner.And("enters password secret_sauce", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 8
- testRunner.When("the login button is clicked", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("login button is clicked", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
- testRunner.Then("the user should be redirected to https://www.saucedemo.com/inventory.html", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("user should be redirected to {0}", url), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableTheoryAttribute(DisplayName="Place product to shopping cart")]
+        [Xunit.TraitAttribute("FeatureTitle", "SwagLabs")]
+        [Xunit.TraitAttribute("Description", "Place product to shopping cart")]
+        [Xunit.TraitAttribute("Category", "cart")]
+        [Xunit.InlineDataAttribute("Sauce Labs Backpack", "$29.99", new string[0])]
+        [Xunit.InlineDataAttribute("Sauce Labs Bike Light", "$9.99", new string[0])]
+        [Xunit.InlineDataAttribute("Sauce Labs Bolt T-Shirt", "$15.99", new string[0])]
+        [Xunit.InlineDataAttribute("Sauce Labs Fleece Jacket", "$49.99", new string[0])]
+        [Xunit.InlineDataAttribute("Sauce Labs Onesie", "$7.99", new string[0])]
+        [Xunit.InlineDataAttribute("Test.allTheThings() T-Shirt (Red)", "$15.99", new string[0])]
+        public virtual void PlaceProductToShoppingCart(string itemName, string itemPrice, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "cart"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Item name", itemName);
+            argumentsOfScenario.Add("Item price", itemPrice);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Place product to shopping cart", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 17
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 18
+ testRunner.Given("user has logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 19
+ testRunner.When(string.Format("{0} is added to cart", itemName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 20
+ testRunner.And("user navigates to cart view", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 21
+ testRunner.Then(string.Format("cart items include {0}", itemName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 22
+ testRunner.And(string.Format("item price is {0}", itemPrice), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
