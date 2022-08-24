@@ -46,7 +46,7 @@ namespace SpecFlowSwagLabs.Specs.PageObjects
 
         public void NavigateToSwagLabs()
         {
-            _driver.Navigate().GoToUrl("https://www.saucedemo.com/");
+            _driver.Navigate().GoToUrl(SwagUrl);
         }
     }
 }

@@ -138,20 +138,20 @@ this.ScenarioInitialize(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableTheoryAttribute(DisplayName="Place product to shopping cart")]
+        [Xunit.SkippableTheoryAttribute(DisplayName="Purchase a product as standard user")]
         [Xunit.TraitAttribute("FeatureTitle", "SwagLabs")]
-        [Xunit.TraitAttribute("Description", "Place product to shopping cart")]
-        [Xunit.TraitAttribute("Category", "cart")]
-        [Xunit.InlineDataAttribute("Sauce Labs Backpack", "$29.99", new string[0])]
-        [Xunit.InlineDataAttribute("Sauce Labs Bike Light", "$9.99", new string[0])]
-        [Xunit.InlineDataAttribute("Sauce Labs Bolt T-Shirt", "$15.99", new string[0])]
-        [Xunit.InlineDataAttribute("Sauce Labs Fleece Jacket", "$49.99", new string[0])]
-        [Xunit.InlineDataAttribute("Sauce Labs Onesie", "$7.99", new string[0])]
-        [Xunit.InlineDataAttribute("Test.allTheThings() T-Shirt (Red)", "$15.99", new string[0])]
-        public virtual void PlaceProductToShoppingCart(string itemName, string itemPrice, string[] exampleTags)
+        [Xunit.TraitAttribute("Description", "Purchase a product as standard user")]
+        [Xunit.TraitAttribute("Category", "purchase")]
+        [Xunit.InlineDataAttribute("Sauce Labs Backpack", new string[0])]
+        [Xunit.InlineDataAttribute("Sauce Labs Bike Light", new string[0])]
+        [Xunit.InlineDataAttribute("Sauce Labs Bolt T-Shirt", new string[0])]
+        [Xunit.InlineDataAttribute("Sauce Labs Fleece Jacket", new string[0])]
+        [Xunit.InlineDataAttribute("Sauce Labs Onesie", new string[0])]
+        [Xunit.InlineDataAttribute("Test.allTheThings() T-Shirt (Red)", new string[0])]
+        public virtual void PurchaseAProductAsStandardUser(string itemName, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "cart"};
+                    "purchase"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -159,8 +159,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("Item name", itemName);
-            argumentsOfScenario.Add("Item price", itemPrice);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Place product to shopping cart", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Purchase a product as standard user", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 17
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -191,10 +190,145 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("user navigates to cart view", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 21
- testRunner.Then(string.Format("cart items include {0}", itemName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("user continues to checkout", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 22
+ testRunner.And("enters proper postal information", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 23
+ testRunner.And("continues to verify order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 24
+ testRunner.And("continues to complete purchase", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 25
+ testRunner.Then("purchase is complete", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 26
+ testRunner.And("cart should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableTheoryAttribute(DisplayName="Place product to shopping cart")]
+        [Xunit.TraitAttribute("FeatureTitle", "SwagLabs")]
+        [Xunit.TraitAttribute("Description", "Place product to shopping cart")]
+        [Xunit.TraitAttribute("Category", "cart")]
+        [Xunit.InlineDataAttribute("Sauce Labs Backpack", "$29.99", new string[0])]
+        [Xunit.InlineDataAttribute("Sauce Labs Bike Light", "$9.99", new string[0])]
+        [Xunit.InlineDataAttribute("Sauce Labs Bolt T-Shirt", "$15.99", new string[0])]
+        [Xunit.InlineDataAttribute("Sauce Labs Fleece Jacket", "$49.99", new string[0])]
+        [Xunit.InlineDataAttribute("Sauce Labs Onesie", "$7.99", new string[0])]
+        [Xunit.InlineDataAttribute("Test.allTheThings() T-Shirt (Red)", "$15.99", new string[0])]
+        public virtual void PlaceProductToShoppingCart(string itemName, string itemPrice, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "cart"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Item name", itemName);
+            argumentsOfScenario.Add("Item price", itemPrice);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Place product to shopping cart", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 39
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 40
+ testRunner.Given("user has logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 41
+ testRunner.When(string.Format("{0} is added to cart", itemName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 42
+ testRunner.And("user navigates to cart view", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 43
+ testRunner.Then(string.Format("cart items include {0}", itemName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 44
  testRunner.And(string.Format("item price is {0}", itemPrice), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableTheoryAttribute(DisplayName="Remove product from shopping cart")]
+        [Xunit.TraitAttribute("FeatureTitle", "SwagLabs")]
+        [Xunit.TraitAttribute("Description", "Remove product from shopping cart")]
+        [Xunit.TraitAttribute("Category", "cart")]
+        [Xunit.InlineDataAttribute("Sauce Labs Backpack", new string[0])]
+        [Xunit.InlineDataAttribute("Sauce Labs Bike Light", new string[0])]
+        [Xunit.InlineDataAttribute("Sauce Labs Bolt T-Shirt", new string[0])]
+        [Xunit.InlineDataAttribute("Sauce Labs Fleece Jacket", new string[0])]
+        [Xunit.InlineDataAttribute("Sauce Labs Onesie", new string[0])]
+        [Xunit.InlineDataAttribute("Test.allTheThings() T-Shirt (Red)", new string[0])]
+        public virtual void RemoveProductFromShoppingCart(string itemName, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "cart"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Item name", itemName);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove product from shopping cart", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 56
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 57
+ testRunner.Given("user has logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 58
+ testRunner.And(string.Format("has added {0} to cart", itemName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 59
+ testRunner.When(string.Format("user clicks the {0} remove button on inventory page", itemName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 60
+ testRunner.Then("cart should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 61
+ testRunner.And(string.Format("option to add {0} to cart should be available", itemName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
